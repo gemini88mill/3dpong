@@ -6,8 +6,8 @@ var renderer;
 var scene;
 var camera;
 
-function init()
-{
+
+function init() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(
@@ -17,7 +17,9 @@ function init()
     setupRenderer();
     setupCamera();
 
-    // Main code here.
+
+
+        // Main code here.
     //updateScore();
     loadBackgroundMusic();
 
@@ -28,8 +30,7 @@ function init()
     render();
 }
 
-function setupRenderer()
-{
+function setupRenderer() {
     renderer = new THREE.WebGLRenderer();
     //						color     alpha
     renderer.setClearColor( 0x000000, 1.0 );
@@ -37,8 +38,7 @@ function setupRenderer()
     renderer.shadowMapEnabled = true;
 }
 
-function setupCamera()
-{
+function setupCamera() {
     camera.position.x = 0;
     camera.position.y = -30;
     camera.position.z = 25;
@@ -47,20 +47,13 @@ function setupCamera()
 
 function render()
 {
-    //ballMovement();
-
-
     // Request animation frame
-    requestAnimationFrame( render );
+    requestAnimationFrame(render);
 
     ballMovement();
-    cpuPaddleMovement();
-    playerPaddle.position.y = ( mx / window.innerWidth ) * 25 - 13;
-    //updateScore();
 
     // Call render()
     renderer.render( scene, camera );
-
 
 }
 
@@ -97,7 +90,7 @@ function playSound(soundEffectPath){
     audioLoader.load( soundEffectPath, function( buffer ) {
         sound.setBuffer( buffer );
         sound.setLoop(false);
-        sound.setVolume(0.5);
+        sound.setVolume(0.2);
         sound.play();
     });
 

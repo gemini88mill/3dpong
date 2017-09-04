@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <meta charset=utf-8>
     <title>3d pong</title>
     <style>
         body { margin: 0; }
         canvas { width: 100%; height: 100% }
     </style>
-
-
+    <script src="js/scoreKeeper.js"></script>
+    <script src="js/three.js/build/three.min.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/movement.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/keyboard.js"></script>
 
 </head>
 <body onmousedown="mouseDownHandler();"
       onmouseup="mouseUpHandler();"
       onmousemove="mouseMoveHandler(event);">
-<script src="js/helvetiker_regular.typeface.js"></script>
-<script src="js/scoreKeeper.js"></script>
-<script src="js/three.js/build/three.min.js"></script>
+
+<div class="wrapper">
+    <p id="volley" class="wrapperTop"> Welcome</p>
+    <script>
+        document.getElementById('volley').innerHTML = getVolley();
+    </script>
+</div>
+<div id="wrapper" class="wrapper">
+    <div class="user" id="userInfo">
+        <h1>User Score</h1>
+        <p class="score" id="playerScore"></p>
+        <script>
+            document.getElementById('playerScore').innerHTML = getScore(playerScore);
+        </script>
+    </div>
+    <div class="cpu" id="cpuInfo">
+        <h1>Cpu Score</h1>
+        <p class="score" id="CpuScore"></p>
+        <script>
+            document.getElementById('CpuScore').innerHTML = getScore(cpuScore);
+        </script>
+    </div>
+</div>
+
+
+
 <script src="js/3dpong.js"></script>
-<script src="js/objects.js"></script>
-<script src="js/movement.js"></script>
+
 
 
 <script>
     // Our Javascript will go here.
-    //init();
 
     var playerPaddle = createPaddles();
     var cpuPaddle = createPaddles();
@@ -48,73 +74,7 @@
     var text = createTitleText();
     scene.add(text);
 
-    //updateScore();
-    //createBoundaries();
 
-
-//    function animate() {
-//        requestAnimationFrame( animate );
-//
-////        //playField.position.z = 0;
-////
-////        playerPaddle.position.x = 0;
-////        playerPaddle.rotation.x += 0.01;
-////        playerPaddle.rotation.y += 0.01;
-////
-////        cpuPaddle.position.x = 15;
-////        cpuPaddle.position.y += 0.01;
-////
-////        ball.rotation.x -= 0.01;
-////        ball.rotation.y -= 0.01;
-//
-//        renderer.render( scene, camera );
-//    }
-//    animate();
-
-//    var scene = new THREE.Scene();
-//    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-//
-//    var renderer = new THREE.WebGLRenderer();
-//    renderer.setSize( window.innerWidth, window.innerHeight );
-//    document.body.appendChild( renderer.domElement );
-//
-//
-//    var geometry = new THREE.BoxGeometry( 4, 1, 1 );
-//    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-//    var playerPaddle = new THREE.Mesh(geometry, material);
-//    var cube2 = new THREE.Mesh(geometry, material);
-//    scene.add(playerPaddle);
-//    scene.add(cube2);
-//
-//    var sphereGeometry = new THREE.SphereGeometry( 0.5, 12, 12 );
-//    var sphereMaterial = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-//    var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-//    scene.add( sphere );
-//
-//    function playboxView() {
-//        var materialLine = new THREE.LineBasicMaterial({ color: 0x0000ff });
-//        var lineGeometry = new THREE.Geometry();
-//        lineGeometry.vertices.push(new THREE.Vector3(-15, 10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(-15, -10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(-15, 10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(15, 10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(15, 10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(15, -10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(15, -10, 0));
-//        lineGeometry.vertices.push(new THREE.Vector3(-15, -10, 0));
-//
-//        var line = new THREE.Line(lineGeometry, materialLine);
-////        scene.add(line);
-//
-//        return line;
-//
-//    }
-//    var playBox = playboxView();
-//
-//    scene.add(playBox);
-//
-//    camera.position.z = 20;
-//
 
 </script>
 </body>
