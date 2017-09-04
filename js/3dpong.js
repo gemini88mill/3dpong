@@ -18,9 +18,8 @@ function init()
     setupCamera();
 
     // Main code here.
-
-
-
+    //updateScore();
+    loadBackgroundMusic();
 
     // Output to the stream
     document.body.appendChild( renderer.domElement );
@@ -57,10 +56,51 @@ function render()
     ballMovement();
     cpuPaddleMovement();
     playerPaddle.position.y = ( mx / window.innerWidth ) * 25 - 13;
-
+    //updateScore();
 
     // Call render()
     renderer.render( scene, camera );
+
+
+}
+
+function loadBackgroundMusic(){
+    //Create an AudioListener and add it to the camera
+    var listener = new THREE.AudioListener();
+    camera.add( listener );
+
+// create a global audio source
+    var sound = new THREE.Audio( listener );
+
+    var audioLoader = new THREE.AudioLoader();
+
+//Load a sound and set it as the Audio object's buffer
+    audioLoader.load( 'assets/music/itsmorefuntocompute.mp3', function( buffer ) {
+        sound.setBuffer( buffer );
+        sound.setLoop(false);
+        sound.setVolume(0.5);
+        sound.play();
+    });
+}
+
+function playSound(soundEffectPath){
+    //Create an AudioListener and add it to the camera
+    var listener = new THREE.AudioListener();
+    camera.add( listener );
+
+// create a global audio source
+    var sound = new THREE.Audio( listener );
+
+    var audioLoader = new THREE.AudioLoader();
+
+//Load a sound and set it as the Audio object's buffer
+    audioLoader.load( soundEffectPath, function( buffer ) {
+        sound.setBuffer( buffer );
+        sound.setLoop(false);
+        sound.setVolume(0.5);
+        sound.play();
+    });
+
 }
 
 

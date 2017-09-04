@@ -14,8 +14,9 @@ function ballMovement(){
 
         if(Math.abs(playerPaddle.position.y - ball.position.y) <=5){
             yDir = -yDir + 0.5;
+            playSound('assets/music/sounds/basshit.mp3');
         } else{
-            playerScore += playerScore;
+            //playerScore += playerScore;
             ball.position.x = ball.position.y = 0;
         }
 
@@ -27,8 +28,9 @@ function ballMovement(){
 
         if(Math.abs(cpuPaddle.position.y - ball.position.y) <=5){
             yDir = -yDir + 0.5;
+            playSound('assets/music/sounds/basshit.mp3');
         } else{
-            playerScore += playerScore;
+            //cpuScore += cpuScore;
             ball.position.x = ball.position.y = 0;
         }
     }
